@@ -1,11 +1,70 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Library</title>
-        <link rel='stylesheet' href="style.css" type='text/css'>
-        <script src="script.js"></script>
-    </head>
-    <body>
-
-    </body>
+ <head>
+    <title>Library</title>
+    <link rel='stylesheet' href="style.css" type='text/css'>
+    <script src="script.js"></script>
+ </head>
+ <body>
+    <div class='top'> 
+        <div top='topA'>
+            <h1>L i b r a r y</h1>
+            <p class='shine'>The Odin Project</p>
+        </div>
+        <div class='buttonDiv'>
+            <button class='newButton' data-button='newBook'>+ NEW BOOK</button> <!--reference for JS-->
+        </div>
+    </div>
+    <div class='container'>
+        <div class='containerTitle'>
+            <h2 class='booksTitle'>Books</h2>
+        </div>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody> <!--reference for JS? data?-->
+                    <!--reference for JS? data? tr????-->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Sum of pages</td>
+                    <td></td>
+                    <td> x </td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class='questionOverlay'> <!--reference for JS? data?-->
+        <form class='questionForm'>
+            <div class='cancelButtonDiv'><button>X</button></div> <!--reference for JS?? id=cancel-->
+            <h3>Add a new book!!</h3>
+            <input type="text" placeholder="Title">  <!--reference for JS? data?-->
+            <input type="text" id="author" placeholder="Author"> <!--reference for JS? data?-->
+            <input type="number" id="pages" placeholder="Pages" min="1"> <!--reference for JS? data?-->
+            <fieldset >
+                <legend>Have you read the book?</legend>
+                <label for="yes">
+                    <input type="radio" id="yes" name="read" value="yes" checked>
+                    <span>Yes</span>
+                  </label>
+                <label for="no">
+                    <input type="radio" id="no" name="read" value="no">
+                    <span>No</span>
+                </label>
+                <label for='reading'>
+                    <input type='radio' id='reading' name='read' value="reading">
+                    <span>Reading</span>
+                </label>
+              </fieldset>
+              <button class='submitButton'>Add this book to the library</button> <!--reference for JS? data?-->
+        </form>
+    </div>
+ </body>
 </html>
