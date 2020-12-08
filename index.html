@@ -3,7 +3,6 @@
  <head>
     <title>Library</title>
     <link rel='stylesheet' href="style.css" type='text/css'>
-    <script src="script.js"></script>
  </head>
  <body>
     <div class='top'> 
@@ -19,7 +18,7 @@
         <div class='containerTitle'>
             <h2 class='booksTitle'>Books</h2>
         </div>
-        <table class='table'>
+        <table class='libraryTable'>
             <thead>
                 <tr>
                     <th>Title</th>
@@ -41,13 +40,13 @@
             </tfoot>
         </table>
     </div>
-    <div class='questionOverlay'> <!--reference for JS? data?-->
-        <form class='questionForm'>
-            <div class='cancelButtonDiv'><button>X</button></div> <!--reference for JS?? id=cancel-->
+    <div class='questionOverlay invisible'> 
+        <form class='questionForm invisible'>
+            <div class='cancelButtonDiv' data-button="cancelButton"><button>X</button></div> 
             <h3>Add a new book!!</h3>
-            <input type="text" placeholder="Title">  <!--reference for JS? data?-->
-            <input type="text" id="author" placeholder="Author"> <!--reference for JS? data?-->
-            <input type="number" id="pages" placeholder="Pages" min="1"> <!--reference for JS? data?-->
+            <input type="text" data-form='title' placeholder="Title">  
+            <input type="text" data-form='author' placeholder="Author"> 
+            <input type="number" data-form='pages' placeholder="Pages" min="1"> 
             <fieldset >
                 <legend>Have you read the book?</legend>
                 <label for="yes">
@@ -63,8 +62,9 @@
                     <span>Reading</span>
                 </label>
               </fieldset>
-              <button class='submitButton'>Add this book to the library</button> <!--reference for JS? data?-->
+              <button class='submitButton' data-button='submitBook'>Add this book to the library</button> 
         </form>
     </div>
  </body>
+ <script src="script.js"></script>
 </html>

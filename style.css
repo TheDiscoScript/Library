@@ -109,3 +109,7 @@ label{
     background-color: yellow;
     border-radius: 10px;
 }
+/*Invisible class for JS function*/
+.invisible{
+    display:none;
+} 
