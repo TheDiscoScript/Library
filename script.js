@@ -29,8 +29,6 @@ const inputPages = document.querySelector('[data-form="pages"]')
 
 
 
-
-
 class Book {
     constructor(title, author, pages, status) {
         this.title = title
@@ -38,11 +36,12 @@ class Book {
         this.pages = pages
         this.status = status
     }
+
     addBookToLibrary(){
         this.title = inputTitle.value
         this.author = inputAuthor.value
         this.pages = inputPages.value
-        this.status = getStatusValue()
+        status = getStatusValue()
         let newBookToLibrary = new Book(title, author, pages, read)
         myLibrary.push(newBookToLibrary)
     }
@@ -77,4 +76,37 @@ newBookB.addEventListener('click', () =>{
 
 
 
+/*
+addBookToLibrary(){
+    this.title = inputTitle.value
+    this.author = inputAuthor.value
+    this.pages = inputPages.value
+    status = getStatusValue()
+    let newBookToLibrary = new Book(title, author, pages, read)
+    myLibrary.push(newBookToLibrary)
+}
+//function for status - read not read reading
+getStatusValue(){
+    if(form.querySelector('input[name="read"]:checked').value =='yes'){
+        return 'read'
+    }else if (form.querySelector('input[name="read"]').value =='no'){
+        return 'not read'
+    } else {return 'reading'}
+}
+//function to append from library to table
+/*appendToTable(){
 
+}*/
+
+
+//function to change status
+//function to remove from table
+//function to clear form??if not autocleared by submit??
+
+//function for invisibility - +newbook e.listener */
+/*toogleInvisibility(){
+    overlayForm.classList.toggle('invisible')
+    form.classList.toggle('invisible')
+} 
+
+*/
