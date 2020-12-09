@@ -64,9 +64,10 @@ class Book {
     //function to clear form??if not autocleared by submit??
 
     //function for invisibility - +newbook e.listener
-    toogleInvisibility(){
+    toogleInvisibility (){
         overlayForm.classList.toggle('invisible')
         form.classList.toggle('invisible')
+        form.style.display = none
     } 
 }
 //event listeners
