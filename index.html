@@ -1,70 +1,45 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <title>Library</title>
-    <link rel='stylesheet' href="style.css" type='text/css'>
- </head>
- <body>
-    <div class='top'> 
-        <div top='topA'>
-            <h1>L i b r a r y</h1>
-            <p class='shine'>The Odin Project</p>
-        </div>
-        <div class='buttonDiv'>
-            <button class='newButton' data-button='newBook'>+ NEW BOOK</button> <!--reference for JS-->
-        </div>
+<head>
+    <meta charset="utf-8">
+    <title>CALCULATOR</title>
+    <link rel='stylesheet' href='style.css' type='text/css'>
+</head>
+<body>
+  <div class='wrap'>
+    <div class='top'>
+        <div class='title'>CALCULATOR</div>
+        <div data-history class='history'>H</div>
     </div>
-    <div class='container'>
-        <div class='containerTitle'>
-            <h2 class='booksTitle'>Books</h2>
-        </div>
-        <table class='libraryTable'>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody> <!--reference for JS? data?-->
-                    <!--reference for JS? data? tr????-->
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>Sum of pages</td>
-                    <td></td>
-                    <td> x </td>
-                    <td></td>
-                </tr>
-            </tfoot>
-        </table>
+    <div class='output'>
+        <div data-log class='log'></div>
+        <div data-operand class='operand'></div>
     </div>
-    <div class='questionOverlay invisible'> 
-        <form class='questionForm invisible'>
-            <div class='cancelButtonDiv' data-button="cancelButton"><button>X</button></div> 
-            <h3>Add a new book!!</h3>
-            <input type="text" id='title' data-form='title' placeholder="Title">  
-            <input type="text" data-form='author' placeholder="Author"> 
-            <input type="number" data-form='pages' placeholder="Pages" min="1"> 
-            <fieldset >
-                <legend>Have you read the book?</legend>
-                <label for="yes">
-                    <input type="radio" id="yes" name="read" value="yes" checked>
-                    <span>Yes</span>
-                  </label>
-                <label for="no">
-                    <input type="radio" id="no" name="read" value="no">
-                    <span>No</span>
-                </label>
-                <label for='reading'>
-                    <input type='radio' id='reading' name='read' value="reading">
-                    <span>Reading</span>
-                </label>
-              </fieldset>
-              <button class='submitButton' data-button='submitBook'>Add this book to the library</button> 
-        </form>
-    </div>
- </body>
- <script src="script.js"></script>
+    <button data-operation class='operation'    >%</button>
+    <button data-clear class='operation'         >CE</button>
+    <button data-clearall class='operation'        >C</button>
+    <button data-delete class='operation'       >DEL</button>
+    <button data-operation class='operation'    >1/x</button>
+    <button data-operation class='operation'     >x2</button>
+    <button data-operation class='operation'      >x^(1/2)</button>
+    <button data-operation  class='operation'     >÷</button>
+    <button data-number class='number'           >7</button>
+    <button data-number class='number'            >8</button>
+    <button data-number class='number'            >9</button>
+    <button data-operation class='operation'      >*</button>
+    <button data-number class='number'            >4</button>
+    <button data-number class='number'            >5</button>
+    <button data-number class='number'            >6</button>
+    <button data-operation class='operation'      >-</button>
+    <button data-number class='number'            >1</button>
+    <button data-number class='number'            >2</button>
+    <button data-number class='number'            >3</button>
+    <button data-operation class='operation'      >+</button>
+    <button data-negate class='number'            >+/-</button>
+    <button data-number class='number'            >0</button>
+    <button data-number class='number'            >.</button>
+    <button data-equals class='equals'            >=</button>
+  </div>
+<script src='script.js'></script>
+</body>
 </html>
