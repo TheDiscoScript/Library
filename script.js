@@ -1,90 +1,119 @@
-/**workflow logic for functions
- clicking on +newBook =>
- f toogle invisible items
- clicking submitbut
- f addBookToLibrary
- f which add book from library to table - append
- f which toogle hidens elements again
- f which clears form??
- */
+//operand + log
+const operandText = document.querySelector('[data-operand]')
+const logText = document.querySelector('[data-log]')
+//equal, clear (all-2buttons), delete
+const equalsButton = document.querySelector('[data-equals]')
+const clearButton = document.querySelector('[data-clear]')
+const clearButtonAll = document.querySelector('[data-clearall]')
+const deleteButton = document.querySelector('[data-delete]')
+//operations, numbers
+const operationButtons = document.querySelectorAll('[data-operation]')
+const numberButtons = document.querySelectorAll('[data-number]')
 
+//vars
+let operand = ''
+let log = ''
+let operation
 
-//variables - library for pushing {title, author, pages, status}
-let myLibrary = [];
+//functions
+//clear function, also calling updateOutput() to actually change inner HTML
+function clearAll(){
+    operand = ''
+    log = ''
+    operation = ''
+    updateOutput();
+}
+function clearOperand(){
+    operand = ''
+    updateOutput();
+}
+function deleting(){
+    operand = operand.slice(0, -1)
+    updateOutput();
+}
 
-
-//selectors
-//buttons
-const newBookB = document.querySelector('[data-button="newBook"]')
-const cancelBookB = document.querySelector('[data-button="cancelButton"]')
-const submitBookB = document.querySelector('[data-button="submitBook"]')
-//library table
-const libraryTable = document.querySelector('.libraryTable')
-const libraryBody = document.querySelector('tbody')
-//formoverlay(for toggle hidden class) +form + inputs
-const overlayForm = document.querySelector('.questionOverlay')
-const form = document.querySelector('.questionForm')
-const inputTitle = document.querySelector('[data-form="title"]')
-const inputAuthor = document.querySelector('[data-form="author"]')
-const inputPages = document.querySelector('[data-form="pages"]')
-
-
-class Book {
-    constructor(title, author, pages, status) {
-        this.title = title
-        this.author = author
-        this.pages = pages
-        this.status = status
+//function to pick operation
+function pickOperation(input){
+    if(operand === '')return;
+    if(log !== ""){
+        count()
     }
+    operation = input
+    log = operand + ' ' + operation;
+    operand = ''
+}
+function count(){
+    let result = 0;
+    let x = log.split(' ')
+    let cleanLog = parseInt(x[0])
+    let typedOperand = parseInt(operand)
+    switch(operation){
+        case '+':
+            result = cleanLog + typedOperand
+            break
+        case '-':
+            result = cleanLog - typedOperand
+            break
+        case '*':
+            result = cleanLog * typedOperand
+            break
+        case '÷':
+            result = cleanLog / typedOperand
+            break  
+        case '1/x':
+            result = 1 / cleanLog
+            break    
+        case 'x2':
+            result = cleanLog * cleanLog
+            break             
+         case 'x^(1/2)':
+            result = Math.sqrt(cleanLog)
+            break 
+        case '%':
+            result = cleanLog % typedOperand
+            break        
+
+    }
+    operand = result
+    operation = ''
+    log = ''
 }
 
-function addBookToLibrary(){
-    let title = inputTitle.value 
-    let author = inputAuthor.value
-    let pages = inputPages.value
-    let status = getStatusValue()
-    let newBookToLibrary = new Book(title, author, pages, status)
-    myLibrary.push(newBookToLibrary)
-    console.log(myLibrary)
+//function for passing number into variable, that will be used in updateOutput()
+function passNumberToOutput(number){
+    if(number === '.' && operand.includes('.')) return;
+    operand = operand + number
 }
-
-//function for status - read not read reading
-function getStatusValue(){
-    if(form.querySelector('input[name="read"]:checked').value =='yes'){
-        return read = 'read'
-    }else if (form.querySelector('input[name="read"]:checked').value =='no'){
-        return read = 'not read'
-    } else {return read = 'reading'}
+//function to change display of output
+function updateOutput(){
+    operandText.innerHTML = numberWithCommas(operand)
+    logText.innerHTML = numberWithCommas(log)
 }
-
-//function to append from library to table
-/*appendToTable(){
-
-}*/
-
-
-//function to change status
-//function to remove from table
-//function to clear form??if not autocleared by submit??
-/*function clearForm(){
-    inputTitle.value = ''
-    inputAuthor.value = ''
-    inputPages.value = ''
-}*/ //not needed
-//function for invisibility - +newbook e.listener
-function toogleInvisibility (){
-    overlayForm.classList.toggle('invisible')
-    form.classList.toggle('invisible')
-} 
-
+//function for commas in updateOutput //copiedfrom stack overflow
+function numberWithCommas(output) {
+    var parts = output.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
 //event listeners
-newBookB.addEventListener('click', () =>{
-    toogleInvisibility()
+//clicking on number buttons
+numberButtons.forEach(button =>{
+    button.addEventListener('click', () =>{
+        passNumberToOutput(button.innerHTML)
+        updateOutput()
+    })
 })
-cancelBookB.addEventListener('click', () =>{
-    toogleInvisibility()
-    //clearForm()
+operationButtons.forEach(button =>{
+    button.addEventListener('click', () => {
+        pickOperation(button.innerHTML)
+        updateOutput()
+    })
 })
-submitBookB.addEventListener('click', () =>{
-    addBookToLibrary();
+equalsButton.addEventListener('click', () =>{
+    count()
+    updateOutput()
 })
+
+clearButtonAll.addEventListener('click', clearAll)
+clearButton.addEventListener('click', clearOperand)
+deleteButton.addEventListener('click', deleting)
