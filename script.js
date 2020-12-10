@@ -12,6 +12,7 @@
 //variables - library for pushing {title, author, pages, status}
 let myLibrary = [];
 
+
 //selectors
 //buttons
 const newBookB = document.querySelector('[data-button="newBook"]')
@@ -28,7 +29,6 @@ const inputAuthor = document.querySelector('[data-form="author"]')
 const inputPages = document.querySelector('[data-form="pages"]')
 
 
-
 class Book {
     constructor(title, author, pages, status) {
         this.title = title
@@ -36,64 +36,27 @@ class Book {
         this.pages = pages
         this.status = status
     }
-
-    addBookToLibrary(){
-        this.title = inputTitle.value
-        this.author = inputAuthor.value
-        this.pages = inputPages.value
-        status = getStatusValue()
-        let newBookToLibrary = new Book(title, author, pages, read)
-        myLibrary.push(newBookToLibrary)
-    }
-    //function for status - read not read reading
-    getStatusValue(){
-        if(form.querySelector('input[name="read"]:checked').value =='yes'){
-            return 'read'
-        }else if (form.querySelector('input[name="read"]').value =='no'){
-            return 'not read'
-        } else {return 'reading'}
-    }
-    //function to append from library to table
-    /*appendToTable(){
-
-    }*/
-    
-
-    //function to change status
-    //function to remove from table
-    //function to clear form??if not autocleared by submit??
-
-    //function for invisibility - +newbook e.listener
-    toogleInvisibility (){
-        overlayForm.classList.toggle('invisible')
-        form.classList.toggle('invisible')
-        form.style.display = none
-    } 
 }
-//event listeners
-newBookB.addEventListener('click', () =>{
-    toogleInvisibility()
-})
 
-
-
-/*
-addBookToLibrary(){
-    this.title = inputTitle.value
-    this.author = inputAuthor.value
-    this.pages = inputPages.value
-    status = getStatusValue()
-    let newBookToLibrary = new Book(title, author, pages, read)
+function addBookToLibrary(){
+    let title = inputTitle.value 
+    let author = inputAuthor.value
+    let pages = inputPages.value
+    let status = getStatusValue()
+    let newBookToLibrary = new Book(title, author, pages, status)
     myLibrary.push(newBookToLibrary)
+    console.log(myLibrary)
 }
+
 //function for status - read not read reading
-getStatusValue(){
+function getStatusValue(){
     if(form.querySelector('input[name="read"]:checked').value =='yes'){
-        return 'read'
-    }else if (form.querySelector('input[name="read"]').value =='no'){
-        return 'not read'
-    } else {return 'reading'}
+        return read = 'read'
+    }else if (form.querySelector('input[name="read"]:checked').value =='no'){
+        return read = 'not read'
+    } else {return read = 'reading'}
 }
+
 //function to append from library to table
 /*appendToTable(){
 
@@ -103,11 +66,25 @@ getStatusValue(){
 //function to change status
 //function to remove from table
 //function to clear form??if not autocleared by submit??
-
-//function for invisibility - +newbook e.listener */
-/*toogleInvisibility(){
+function clearForm(){
+    inputTitle.value = ''
+    inputAuthor.value = ''
+    inputPages.value = ''
+}
+//function for invisibility - +newbook e.listener
+function toogleInvisibility (){
     overlayForm.classList.toggle('invisible')
     form.classList.toggle('invisible')
 } 
 
-*/
+//event listeners
+newBookB.addEventListener('click', () =>{
+    toogleInvisibility()
+})
+cancelBookB.addEventListener('click', () =>{
+    toogleInvisibility()
+    //clearForm()
+})
+submitBookB.addEventListener('click', () =>{
+    addBookToLibrary();
+})
