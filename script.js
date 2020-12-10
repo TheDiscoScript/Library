@@ -66,11 +66,11 @@ function getStatusValue(){
 //function to change status
 //function to remove from table
 //function to clear form??if not autocleared by submit??
-function clearForm(){
+/*function clearForm(){
     inputTitle.value = ''
     inputAuthor.value = ''
     inputPages.value = ''
-}
+}*/ //not needed
 //function for invisibility - +newbook e.listener
 function toogleInvisibility (){
     overlayForm.classList.toggle('invisible')
