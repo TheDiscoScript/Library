@@ -1,7 +1,14 @@
-# odinProject_Library
-Odin Project - JS FULLSTACK course - First project: Library
+# odinProject_Calculator
 
-I am using class and constructor in JS.
-Yeah, prototypes just seemed way to complicated so I prefer classes.
+Calculator project from odinProject
 
---> OH WELL NWM
+similar to windows10 calculator design
+# css magic
+
+    -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(255, 255, 255, 0.2));
+    word-break: break-all //It is used to break the words at any character to prevent overflow.
+    word-wrap: break-word; It is used to broken the words at arbitrary points to prevent overflow.
+
+bit janky, but works
+
+# git pages
