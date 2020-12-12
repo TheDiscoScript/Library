@@ -1,6 +1,11 @@
 //variables - library for pushing {title, author, pages, status}
-let myLibrary = [];
+let myLibrary = [{
+    name: 'Meditations',
+    author: 'Marcus Aurelius',
+    pages: 196,
+    status: 'read'
 
+}];
 
 //selectors
 //buttons
@@ -21,6 +26,13 @@ const yesOption = document.querySelector('#yes')
 //totalpages
 const total = document.querySelector('[data-counter="sum"]')
 
+//function for storage
+function populateStorage(){
+    localStorage.setItem('library', JSON.stringify(myLibrary));
+  }
+function getStorage(){
+    myLibrary = JSON.parse(localStorage.getItem('library'));
+}
 
 class Book {
     constructor(title, author, pages, status) {
@@ -71,7 +83,7 @@ function appendToTable(){
         TDremoveButton.textContent = 'remove'
         tbodyTR.appendChild(tbodyTDremB)
         tbodyTDremB.appendChild(TDremoveButton)
-    })
+    })    
 }
 
 //function to change status
@@ -134,19 +146,27 @@ cancelBookB.addEventListener('click', () =>{
 })
 submitBookB.addEventListener('click', () =>{
     addBookToLibrary();
-    toogleInvisibility();
+    toogleInvisibility();  
     clearForm();
     sum()
     a()
+    populateStorage()
 })
 document.addEventListener('click', (event)=>{
     if(event.target.textContent === 'remove'){
         removeFromTable()
         sum()
+        populateStorage()
     }
     if(event.target.textContent ==='change status'){
         changeStatus()
         sum()
+        populateStorage()
     }
+})
+window.addEventListener('load', () =>{
+    getStorage()
+    sum()
+    appendToTable()
 })
 
