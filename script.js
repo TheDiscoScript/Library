@@ -1,11 +1,5 @@
 //variables - library for pushing {title, author, pages, status}
-let myLibrary = [{
-    name: 'Meditations',
-    author: 'Marcus Aurelius',
-    pages: 196,
-    status: 'read'
-
-}];
+let myLibrary = [];
 
 //selectors
 //buttons
