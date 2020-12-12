@@ -1,11 +1,6 @@
 //variables - library for pushing {title, author, pages, status}
 let myLibrary = [
-    {
-        name: 'Meditations',
-        author :'Marcus Aurelius',
-        pages: 196,
-        status: 'read'
-    }
+    
 ];
 
 
@@ -126,19 +121,13 @@ function toogleInvisibility (){
 
 function sum(){
     let sum = 0
-    if(myLibrary == null){
-        return sum = 0
-    } else{
     myLibrary.forEach(book => {
         if(book['status'] === 'read'){
             sum += book['pages']
         }
         total.textContent = sum
-    })}
+    })
 }
-
-
-
 
 function a(){
     libraryBody.textContent = ''
