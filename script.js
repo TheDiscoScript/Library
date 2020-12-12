@@ -29,12 +29,12 @@ const yesOption = document.querySelector('#yes')
 const total = document.querySelector('[data-counter="sum"]')
 
 //function for storage
-function populateStorage(){
+/*function populateStorage(){
     localStorage.setItem('library', JSON.stringify(myLibrary));
   }
 function getStorage(){
     myLibrary = JSON.parse(localStorage.getItem('library'));
-}
+}*/
 
 class Book {
     constructor(title, author, pages, status) {
@@ -159,22 +159,22 @@ submitBookB.addEventListener('click', () =>{
     clearForm();
     sum()
     a()
-    populateStorage()
+ //   populateStorage()
 })
 document.addEventListener('click', (event)=>{
     if(event.target.textContent === 'remove'){
         removeFromTable()
         sum()
-        populateStorage()
+     //   populateStorage()
     }
     if(event.target.textContent ==='change status'){
         changeStatus()
         sum()
-        populateStorage()
+   //     populateStorage()
     }
 })
 window.addEventListener('load', () =>{
-    getStorage()
+  //  getStorage()
     sum()
     appendToTable()
 })
