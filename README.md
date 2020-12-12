@@ -1,8 +1,8 @@
 # odinProject_Library
 Odin Project - JS FULLSTACK course - First project: Library
 # live preview
-
-#
+https://willdooo.github.io/odinProject_Library/
+# journey
 
 I am using class and constructor in JS.
 Yeah, prototypes just seemed way to complicated so I prefer classes.
