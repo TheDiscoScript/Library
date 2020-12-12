@@ -123,15 +123,23 @@ function toogleInvisibility (){
     overlayForm.classList.toggle('invisible')
     form.classList.toggle('invisible')
 } 
+
 function sum(){
     let sum = 0
+    if(myLibrary == null){
+        return
+    } else{
     myLibrary.forEach(book => {
         if(book['status'] === 'read'){
             sum += book['pages']
         }
         total.textContent = sum
-    })
+    })}
 }
+
+
+
+
 function a(){
     libraryBody.textContent = ''
     appendToTable();
