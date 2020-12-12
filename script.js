@@ -8,6 +8,7 @@ let myLibrary = [
     }
 ];
 
+
 //selectors
 //buttons
 const newBookB = document.querySelector('[data-button="newBook"]')
@@ -51,7 +52,6 @@ function addBookToLibrary(){
     let status = getStatusValue()
     let newBookToLibrary = new Book(title, author, pages, status)
     myLibrary.push(newBookToLibrary)
-    console.log(myLibrary)
 }
 
 //function for status - read not read reading
