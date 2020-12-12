@@ -1,14 +1,3 @@
-/**workflow logic for functions
- clicking on +newBook =>
- f toogle invisible items
- clicking submitbut
- f addBookToLibrary
- f which add book from library to table - append
- f which toogle hidens elements again
- f which clears form??
- */
-
-
 //variables - library for pushing {title, author, pages, status}
 let myLibrary = [];
 
@@ -29,13 +18,15 @@ const inputAuthor = document.querySelector('[data-form="author"]')
 const inputPages = document.querySelector('[data-form="pages"]')
 //form radiobutons
 const yesOption = document.querySelector('#yes')
+//totalpages
+const total = document.querySelector('[data-counter="sum"]')
 
 
 class Book {
     constructor(title, author, pages, status) {
         this.title = title
         this.author = author
-        this.pages = pages
+        this.pages = parseInt(pages)
         this.status = status
     }
 }
@@ -60,13 +51,52 @@ function getStatusValue(){
 }
 
 //function to append from library to table
-/*appendToTable(){
-
-}*/
-
+function appendToTable(){
+    myLibrary.forEach((book, index) =>{
+        let tbodyTR = document.createElement('tr')
+        libraryBody.appendChild(tbodyTR)
+        tbodyTR.setAttribute('data-book', index) //sets 'data-book: 0, 1, 2...) - removing tr removes all child TDs
+        for (let content in book){
+            let tbodyTD = document.createElement('td')
+            tbodyTD.textContent = book[content]
+            tbodyTR.appendChild(tbodyTD)
+        }
+        let tbodyTDchanB = document.createElement('td')
+        let TDchangeButton = document.createElement('button')
+        TDchangeButton.textContent = 'change status'
+        tbodyTR.appendChild(tbodyTDchanB)
+        tbodyTDchanB.appendChild(TDchangeButton)
+        let tbodyTDremB = document.createElement('td')
+        let TDremoveButton = document.createElement('button')
+        TDremoveButton.textContent = 'remove'
+        tbodyTR.appendChild(tbodyTDremB)
+        tbodyTDremB.appendChild(TDremoveButton)
+    })
+}
 
 //function to change status
-//function to remove from table
+function changeStatus(){
+    let number = event.target.parentElement.parentElement.getAttribute('data-book')
+    if(myLibrary[number]['status'] === 'read'){
+        myLibrary[number]['status'] = 'not read'
+        a()
+    } else if(myLibrary[number]['status'] === 'not read'){
+        myLibrary[number]['status'] = 'reading'
+        a()
+    } else if(myLibrary[number]['status'] === 'reading'){
+        myLibrary[number]['status'] = 'read'
+        a()
+    }
+}
+//function to remove from table (actually remove from library + update table)
+function removeFromTable(){
+    myLibrary.splice(
+        event.target.parentElement.parentElement.getAttribute('data-book'),
+        1
+    )
+    a()
+
+}
 //function to clear form??if not autocleared by submit??
 function clearForm(){
     inputTitle.value = ''
@@ -80,6 +110,19 @@ function toogleInvisibility (){
     overlayForm.classList.toggle('invisible')
     form.classList.toggle('invisible')
 } 
+function sum(){
+    let sum = 0
+    myLibrary.forEach(book => {
+        if(book['status'] === 'read'){
+            sum += book['pages']
+        }
+        total.textContent = sum
+    })
+}
+function a(){
+    libraryBody.textContent = ''
+    appendToTable();
+}
 
 //event listeners
 newBookB.addEventListener('click', () =>{
@@ -93,4 +136,17 @@ submitBookB.addEventListener('click', () =>{
     addBookToLibrary();
     toogleInvisibility();
     clearForm();
+    sum()
+    a()
 })
+document.addEventListener('click', (event)=>{
+    if(event.target.textContent === 'remove'){
+        removeFromTable()
+        sum()
+    }
+    if(event.target.textContent ==='change status'){
+        changeStatus()
+        sum()
+    }
+})
+

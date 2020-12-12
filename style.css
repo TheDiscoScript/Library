@@ -96,6 +96,9 @@ fieldset{
 label{
     margin: 0px 10px
 }
+td{
+    padding-right: 4rem;
+}
 .submitButton{
     cursor: pointer;
     transition: all 0.2s ease-in-out;
