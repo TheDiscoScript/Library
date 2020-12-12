@@ -127,7 +127,7 @@ function toogleInvisibility (){
 function sum(){
     let sum = 0
     if(myLibrary == null){
-        return
+        return sum = 0
     } else{
     myLibrary.forEach(book => {
         if(book['status'] === 'read'){
