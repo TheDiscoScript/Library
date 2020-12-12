@@ -1,6 +1,8 @@
 # odinProject_Library
 Odin Project - JS FULLSTACK course - First project: Library
 # live preview
+https://willdooo.github.io/odinProject_Library/
+-- doens't work
 
 # journey
 
